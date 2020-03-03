@@ -9,3 +9,50 @@ The dataset is the [2015 Yellow Taxi Trip Data](https://data.cityofnewyork.us/Tr
 ## Algorithm
 
 The scope of the project is to find the coordinates of the top 5 pickup locations. In order to achieve this, we implemented the [K-means](https://en.wikipedia.org/wiki/K-means_clustering) with k=5, that clusters the pickup locations in five regions.
+
+## Usage
+
+- Upload data in hdfs
+
+```
+hadoop fs -put ./yellow_tripdata_1m.csv hdfs://master:9000/yellow_tripdata_1m.csv
+```
+
+- Install necessary requirements
+
+```
+pip install -r requirements.txt
+```
+
+- Submit the job in a Spark environment
+
+```
+spark-submit kmeans.py
+```
+
+- Get the results from the hdfs and print them
+
+```
+hadoop fs -getmerge hdfs://master:9000/kmeans.res ./kmeans.res
+cat kmeans.res 
+
+[-74.33685886  40.71401562]
+[-73.84222159  40.71854692]
+[-73.99625567  40.71627292]
+[-73.99097947  40.74444285]
+[-73.96875398  40.77099479]
+```
+
+- Convert them in kml form
+
+```
+python create_kml.py 
+```
+
+
+## Results
+
+
+
+
+

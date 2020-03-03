@@ -52,6 +52,9 @@ python create_kml.py
 
 ## Results
 
+ <p float="left">
+  <img src="kmeans.png" >
+</p>
 
 
 

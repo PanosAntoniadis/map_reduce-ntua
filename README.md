@@ -12,6 +12,8 @@ The scope of the project is to find the coordinates of the top 5 pickup location
 
 ## Usage
 
+We assume that Spark and HDFS are installed in our system.
+
 - Upload data in hdfs
 
 ```
@@ -57,5 +59,11 @@ python create_kml.py
 </p>
 
 
+## Project Structure
 
+- ```kmeans.py:``` Runs the kmeans algorithm using Spark Map Reduce jobs.
+- ```create_kml.py:``` Creates a kml file from the output.
+- ```kmeans.res:``` Coordinates of the final centers.
+- ```report.pdf:``` Report of the project in Greek
+- ```description.pdf:``` Project description in Greek
 

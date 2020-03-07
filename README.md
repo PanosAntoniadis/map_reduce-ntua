@@ -10,9 +10,16 @@ The dataset is the [2015 Yellow Taxi Trip Data](https://data.cityofnewyork.us/Tr
 
 The scope of the project is to find the coordinates of the top 5 pickup locations. In order to achieve this, we implemented the [K-means](https://en.wikipedia.org/wiki/K-means_clustering) with k=5, that clusters the pickup locations in five regions.
 
+
+## Requirements
+
+- numpy
+- simplekml
+
+
 ## Usage
 
-We assume that Spark and HDFS are installed in our system.
+We assume that Spark and HDFS are already installed in our system.
 
 - Upload data in hdfs
 

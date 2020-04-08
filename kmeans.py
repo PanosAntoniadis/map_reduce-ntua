@@ -89,7 +89,7 @@ if __name__ == "__main__":
         for (idx, new_centroid) in new_centroids.collect():
             centroids[idx] = new_centroid
 
-            iterations += 1
+        iterations += 1
 
 # Save result in hdfs
 centroids = sc.parallelize(centroids)

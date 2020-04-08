@@ -73,21 +73,23 @@ if __name__ == "__main__":
     centroids = data.take(5)
 
     while (iterations <= MAX_ITERATIONS):
-	    # Map each point to the closest centroid
-	    new_centroids = data.map(lambda point: (
-	        closest_centroid(point, centroids), (point, 1)))
+        # Map each point to the closest centroid
+        new_centroids = data.map(lambda point: (
+            closest_centroid(point, centroids), (point, 1)))
 
-	    # Sum the coordinates and the size of the points in each centroid
-        new_centroids = new_centroids.reduceByKey(lambda x, y: (x[0]+y[0], x[1]+y[1]))
+        # Sum the coordinates and the size of the points in each centroid
+        new_centroids = new_centroids.reduceByKey(
+            lambda x, y: (x[0] + y[0], x[1] + y[1]))
 
-	    # Compute the new centroids as the mean value of the coordinates of the points in each centroid
-        new_centroids = new_centroids.map(lambda line : (line[0], line[1][0]/line[1][1]))
+        # Compute the new centroids as the mean value of the coordinates of the points in each centroid
+        new_centroids = new_centroids.map(
+            lambda line: (line[0], line[1][0] / line[1][1]))
 
-	    # Update the centroids
+        # Update the centroids
         for (idx, new_centroid) in new_centroids.collect():
             centroids[idx] = new_centroid
 
-        iterations += 1
+            iterations += 1
 
 # Save result in hdfs
 centroids = sc.parallelize(centroids)
